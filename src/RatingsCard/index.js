@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
 import "./styles.css";
 
+const inverseOpacity = o => 1 - o;
+const inverseTransform = t => `${t} rotateY(180deg)`;
+
 export const RatingsCard = ({ image }) => {
   const [selected, setSelected] = useState(false);
 
@@ -20,7 +23,7 @@ export const RatingsCard = ({ image }) => {
         className="RatingsCard__front"
         style={{
           backgroundImage: `url(${image})`,
-          opacity: opacity.interpolate(o => 1 - o),
+          opacity: opacity.interpolate(inverseOpacity),
           transform
         }}
       />
@@ -28,7 +31,7 @@ export const RatingsCard = ({ image }) => {
         className="RatingsCard__back"
         style={{
           opacity,
-          transform: transform.interpolate(t => `${t} rotateY(180deg)`)
+          transform: transform.interpolate(inverseTransform)
         }}
       >
         BACK
