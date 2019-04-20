@@ -5,7 +5,7 @@ import "./styles.css";
 export const RatingsCard = ({ image }) => {
   const [selected, setSelected] = useState(false);
 
-  const props = useSpring({
+  const { opacity, transform } = useSpring({
     config: {
       friction: 22,
       tension: 500
@@ -20,15 +20,15 @@ export const RatingsCard = ({ image }) => {
         className="RatingsCard__front"
         style={{
           backgroundImage: `url(${image})`,
-          opacity: props.opacity.interpolate(o => 1 - o),
-          transform: props.transform
+          opacity: opacity.interpolate(o => 1 - o),
+          transform
         }}
       />
       <animated.div
         className="RatingsCard__back"
         style={{
-          opacity: props.opacity,
-          transform: props.transform.interpolate(t => `${t} rotateY(180deg)`)
+          opacity,
+          transform: transform.interpolate(t => `${t} rotateY(180deg)`)
         }}
       >
         BACK
