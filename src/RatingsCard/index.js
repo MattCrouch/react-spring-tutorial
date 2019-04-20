@@ -6,6 +6,10 @@ export const RatingsCard = ({ image }) => {
   const [selected, setSelected] = useState(false);
 
   const props = useSpring({
+    config: {
+      friction: 22,
+      tension: 500
+    },
     opacity: selected ? 1 : 0,
     transform: `rotateY(${selected ? 180 : 0}deg)`
   });
