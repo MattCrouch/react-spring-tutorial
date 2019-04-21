@@ -23,8 +23,6 @@ export const RatingsCard = ({ image, rating }) => {
   const [selected, setSelected] = useState(false);
   const [currentRating, setRating] = useState(rating);
 
-  const addRating = value => setRating(value);
-
   // Card shimmy
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1]
@@ -64,7 +62,7 @@ export const RatingsCard = ({ image, rating }) => {
         }}
       >
         {selected && (
-          <StarRating addRating={addRating} rating={currentRating} />
+          <StarRating setRating={setRating} rating={currentRating} />
         )}
       </animated.div>
     </animated.div>

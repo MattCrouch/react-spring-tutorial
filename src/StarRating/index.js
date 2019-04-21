@@ -4,7 +4,7 @@ import Star from "../Star";
 
 import "./styles.css";
 
-export const StarRating = ({ rating }) => {
+export const StarRating = ({ rating, setRating }) => {
   const AnimatedStar = animated(Star);
 
   const animatedStars = useTrail(5, {
@@ -22,6 +22,10 @@ export const StarRating = ({ rating }) => {
       {animatedStars.map((props, index) => (
         <AnimatedStar
           active={index + 1 <= rating}
+          onClick={e => {
+            e.stopPropagation();
+            setRating(index + 1);
+          }}
           key={index}
           style={{ ...props }}
         />
