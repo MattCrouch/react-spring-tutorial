@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useSpring, animated } from "react-spring";
+import StarRating from "../StarRating";
+
 import "./styles.css";
 
 // Calculate the tilt based on the cursor position on screen rather than the card
@@ -58,7 +60,7 @@ export const RatingsCard = ({ image }) => {
           transform: transform.interpolate(inverseTransform)
         }}
       >
-        BACK
+        {selected && <StarRating />}
       </animated.div>
     </animated.div>
   );
