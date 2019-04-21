@@ -19,8 +19,11 @@ const trans = (x, y, s) =>
 const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
-export const RatingsCard = ({ image }) => {
+export const RatingsCard = ({ image, rating }) => {
   const [selected, setSelected] = useState(false);
+  const [currentRating, setRating] = useState(rating);
+
+  const addRating = value => setRating(value);
 
   // Card shimmy
   const [props, set] = useSpring(() => ({
@@ -60,7 +63,9 @@ export const RatingsCard = ({ image }) => {
           transform: transform.interpolate(inverseTransform)
         }}
       >
-        {selected && <StarRating />}
+        {selected && (
+          <StarRating addRating={addRating} rating={currentRating} />
+        )}
       </animated.div>
     </animated.div>
   );

@@ -4,7 +4,7 @@ import Star from "../Star";
 
 import "./styles.css";
 
-export const StarRating = () => {
+export const StarRating = ({ rating }) => {
   const AnimatedStar = animated(Star);
 
   const animatedStars = useTrail(5, {
@@ -20,7 +20,11 @@ export const StarRating = () => {
   return (
     <div className="StarRating">
       {animatedStars.map((props, index) => (
-        <AnimatedStar key={index} style={{ ...props }} />
+        <AnimatedStar
+          active={index + 1 <= rating}
+          key={index}
+          style={{ ...props }}
+        />
       ))}
     </div>
   );
