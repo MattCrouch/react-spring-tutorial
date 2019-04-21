@@ -9,6 +9,7 @@ export class Star extends Component {
         className="Star"
         style={this.props.style}
         onClick={this.props.onClick}
+        onMouseEnter={this.props.onMouseEnter}
         width="102px"
         height="96px"
         viewBox="0 0 102 96"

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTrail, animated } from "react-spring";
 import Star from "../Star";
 
 import "./styles.css";
 
 export const StarRating = ({ rating, setRating }) => {
+  const [hovered, setHover] = useState(undefined);
+
   const AnimatedStar = animated(Star);
 
   const animatedStars = useTrail(5, {
@@ -18,10 +20,11 @@ export const StarRating = ({ rating, setRating }) => {
   });
 
   return (
-    <div className="StarRating">
+    <div className="StarRating" onMouseLeave={() => setHover(undefined)}>
       {animatedStars.map((props, index) => (
         <AnimatedStar
-          active={index + 1 <= rating}
+          active={hovered ? index + 1 <= hovered : index + 1 <= rating}
+          onMouseEnter={() => setHover(index + 1)}
           onClick={e => {
             e.stopPropagation();
             setRating(index + 1);

@@ -62,7 +62,7 @@ export const RatingsCard = ({ image, rating }) => {
         }}
       >
         {selected && (
-          <StarRating setRating={setRating} rating={currentRating} />
+          <StarRating rating={currentRating} setRating={setRating} />
         )}
       </animated.div>
     </animated.div>
