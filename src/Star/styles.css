@@ -1,6 +1,13 @@
 .Star {
+  all: unset;
+  appearance: none;
   display: inline-block;
   height: 2em;
   width: 2em;
   margin: 0.2em;
+}
+
+.Star__icon {
+  width: 100%;
+  height: 100%;
 }
