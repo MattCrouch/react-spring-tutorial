@@ -15,15 +15,16 @@ const calc = (x, y) => [
 const trans = (x, y, s) =>
   `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
-// Flipping interpolation
+// Functions that interpolate the values for the flipping animation
 const inverseOpacity = o => 1 - o;
 const inverseTransform = t => `${t} rotateY(180deg)`;
 
 export const RatingsCard = ({ image, rating }) => {
+  // Hold state for selection and rating
   const [selected, setSelected] = useState(false);
   const [currentRating, setRating] = useState(rating);
 
-  // Card shimmy
+  // Card tilt
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1]
   }));
@@ -39,13 +40,15 @@ export const RatingsCard = ({ image, rating }) => {
   });
 
   return (
+    // Card container
     <animated.div
-      onClick={() => setSelected(!selected)}
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
       className="RatingsCard"
+      onClick={() => setSelected(!selected)}
+      onMouseLeave={() => set({ xys: [0, 0, 1] })}
+      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
       style={{ transform: !selected && props.xys.interpolate(trans) }}
     >
+      {/* Front */}
       <animated.div
         className="RatingsCard__front"
         style={{
@@ -54,6 +57,7 @@ export const RatingsCard = ({ image, rating }) => {
           transform
         }}
       />
+      {/* Back */}
       <animated.div
         className="RatingsCard__back"
         style={{
@@ -61,6 +65,7 @@ export const RatingsCard = ({ image, rating }) => {
           transform: transform.interpolate(inverseTransform)
         }}
       >
+        {/* Show rating only if the card is selected */}
         {selected && (
           <StarRating rating={currentRating} setRating={setRating} />
         )}

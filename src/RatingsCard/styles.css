@@ -1,13 +1,13 @@
 .RatingsCard {
+  cursor: pointer;
   /* Filter over box-shadow to support the flip effect */
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
-  width: 20rem;
   height: 20rem;
   position: relative;
   perspective: 1000px;
-  cursor: pointer;
   transition: filter 0.5s;
+  width: 20rem;
 }
 
 .RatingsCard:hover {
@@ -18,9 +18,9 @@
 .RatingsCard__front,
 .RatingsCard__back {
   background-color: rgb(230, 230, 230);
+  height: 100%;
   position: absolute;
   width: 100%;
-  height: 100%;
 }
 
 .RatingsCard__front {

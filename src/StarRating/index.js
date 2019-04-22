@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { useTrail, animated } from "react-spring";
 import Star from "../Star";
 
-import "./styles.css";
-
 export const StarRating = ({ rating, setRating }) => {
+  // Hold state about which rating is hovered over
   const [hovered, setHover] = useState(undefined);
 
+  // Make <Star /> component aware of animations
   const AnimatedStar = animated(Star);
 
+  // Set stars to animate one after another
   const animatedStars = useTrail(5, {
     config: {
       friction: 22,

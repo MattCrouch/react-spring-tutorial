@@ -1,9 +1,9 @@
 .App {
   align-items: center;
-  justify-items: center;
   display: grid;
-  min-height: 100vh;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   grid-gap: 2rem;
+  justify-items: center;
+  min-height: 100vh;
   padding: 2rem;
 }
