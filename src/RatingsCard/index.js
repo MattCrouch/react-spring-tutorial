@@ -6,8 +6,8 @@ import "./styles.css";
 
 // Calculate the tilt based on the cursor position on screen rather than the card
 const calc = (x, y) => [
-  -(y - window.innerHeight / 2) / 20,
-  (x - window.innerWidth / 2) / 20,
+  -(y - window.innerHeight / 2) / 40,
+  (x - window.innerWidth / 2) / 40,
   1.1
 ];
 
