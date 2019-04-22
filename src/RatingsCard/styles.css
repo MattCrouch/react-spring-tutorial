@@ -1,15 +1,18 @@
 .RatingsCard {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  /* Filter over box-shadow to support the flip effect */
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
   width: 20vw;
   height: 20vw;
   position: relative;
   perspective: 1000px;
   cursor: pointer;
-  transition: box-shadow 0.5s;
+  transition: filter 0.5s;
 }
 
 .RatingsCard:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.25))
+    drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
 }
 
 .RatingsCard__front,
