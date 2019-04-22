@@ -2,8 +2,8 @@
   /* Filter over box-shadow to support the flip effect */
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.16))
     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.1));
-  width: 20vw;
-  height: 20vw;
+  width: 20rem;
+  height: 20rem;
   position: relative;
   perspective: 1000px;
   cursor: pointer;
