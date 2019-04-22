@@ -27,6 +27,7 @@ export const StarRating = ({ rating, setRating }) => {
           onMouseEnter={() => setHover(index + 1)}
           onClick={e => {
             e.stopPropagation();
+            setHover(undefined);
             setRating(index + 1);
           }}
           key={index}
