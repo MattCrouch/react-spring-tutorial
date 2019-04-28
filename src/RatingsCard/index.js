@@ -5,15 +5,15 @@ import StarRating from "../StarRating";
 import "./styles.css";
 
 // Calculate the tilt based on the cursor position on screen rather than the card
-const calc = (x, y) => [
+const calculateValues = (x, y) => [
   -(y - window.innerHeight / 2) / 40,
   (x - window.innerWidth / 2) / 40,
   1.1
 ];
 
 // Apply values to transform property
-const trans = (x, y, s) =>
-  `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
+const transformCard = (x, y, scale) =>
+  `perspective(1000px) rotateX(${x}deg) rotateY(${y}deg) scale(${scale})`;
 
 // Functions that interpolate the values for the flipping animation
 const inverseOpacity = o => 1 - o;
@@ -26,7 +26,7 @@ export const RatingsCard = ({ image, rating }) => {
 
   // Card tilt
   const [props, set] = useSpring(() => ({
-    xys: [0, 0, 1]
+    state: [0, 0, 1]
   }));
 
   // Flipping
@@ -44,9 +44,11 @@ export const RatingsCard = ({ image, rating }) => {
     <animated.div
       className="RatingsCard"
       onClick={() => setSelected(!selected)}
-      onMouseLeave={() => set({ xys: [0, 0, 1] })}
-      onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-      style={{ transform: !selected && props.xys.interpolate(trans) }}
+      onMouseLeave={() => set({ state: [0, 0, 1] })}
+      onMouseMove={({ clientX: x, clientY: y }) =>
+        set({ state: calculateValues(x, y) })
+      }
+      style={{ transform: !selected && props.state.interpolate(transformCard) }}
     >
       {/* Front */}
       <animated.div
